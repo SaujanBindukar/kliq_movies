@@ -9,18 +9,6 @@ class LoginScreen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final theme = ref.watch(themeProvider);
-    return Scaffold(
-      body: Center(
-        child: Switch(
-          value: theme == ThemeMode.dark,
-          onChanged: (value) {
-            ref.read(themeProvider.notifier).changeTheme(
-                  isDark: value,
-                );
-          },
-        ),
-      ),
-    );
+    return Scaffold();
   }
 }

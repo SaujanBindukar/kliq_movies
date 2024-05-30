@@ -26,26 +26,27 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     final index = ref.watch(bottomNavProvider);
     return Scaffold(
       appBar: AppBar(),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: index,
-      //   items: const [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.favorite),
-      //       label: 'Favorite',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.person),
-      //       label: 'Account',
-      //     )
-      //   ],
-      // ),
-      body: Column(
-        children: [],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
+        onTap: (value) {
+          ref.read(bottomNavProvider.notifier).changeIndex(index: value);
+        },
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite),
+            label: 'Favorite',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Account',
+          )
+        ],
       ),
+      body: body[index],
     );
   }
 }

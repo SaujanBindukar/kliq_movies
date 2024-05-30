@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1026701935958",
+    "project_id": "kliq-a0d36",
+    "storage_bucket": "kliq-a0d36.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1026701935958:android:7b400d22ede7f47f49c2f7",
+        "android_client_info": {
+          "package_name": "com.example.kliq_movies"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwZ7sbB8A5i-wZxY6sjAwNrSkMQexYCbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
