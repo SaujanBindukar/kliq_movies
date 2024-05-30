@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kliq_movies/core/entities/base_state.dart';
+import 'package:kliq_movies/feature/auth/application/app_controller.dart';
 import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
 import 'package:kliq_movies/feature/favourite/favourite_screen.dart';
 import 'package:kliq_movies/feature/home/home_screen.dart';
@@ -24,6 +26,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     final index = ref.watch(bottomNavProvider);
+    final currentUser = ref.watch(appControllerProvider).asData?.value;
     return Scaffold(
       appBar: AppBar(),
       bottomNavigationBar: BottomNavigationBar(
@@ -31,19 +34,20 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         onTap: (value) {
           ref.read(bottomNavProvider.notifier).changeIndex(index: value);
         },
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Favorite',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Account',
-          )
+          if (currentUser is BaseSuccess)
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Account',
+            )
         ],
       ),
       body: body[index],
