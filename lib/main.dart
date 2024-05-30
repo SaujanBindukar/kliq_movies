@@ -22,7 +22,7 @@ void main() async {
   );
 }
 
-class MyApp extends ConsumerWidget {
+class MyApp extends HookConsumerWidget {
   MyApp({super.key});
 
   final _appRouter = AppRouter();
@@ -32,6 +32,7 @@ class MyApp extends ConsumerWidget {
     final themeMode = ref.watch(themeProvider);
     return MaterialApp.router(
       title: 'Kliq Movies',
+      debugShowCheckedModeBanner: false,
       darkTheme: AppTheme.darkTheme,
       theme: AppTheme.lightTheme,
       themeMode: themeMode,

@@ -9,7 +9,7 @@ final themeProvider = StateNotifierProvider<ThemeProvider, ThemeMode>((ref) {
 class ThemeProvider extends StateNotifier<ThemeMode> {
   ThemeProvider({
     required this.ref,
-  }) : super(ThemeMode.light);
+  }) : super(ThemeMode.dark);
   final Ref ref;
 
   void changeTheme({
