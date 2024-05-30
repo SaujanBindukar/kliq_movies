@@ -5,7 +5,7 @@ import 'package:kliq_movies/core/entities/base_state.dart';
 import 'package:kliq_movies/feature/auth/application/app_controller.dart';
 import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
 import 'package:kliq_movies/feature/favourite/favourite_screen.dart';
-import 'package:kliq_movies/feature/home/home_screen.dart';
+import 'package:kliq_movies/feature/home/presentation/home_screen.dart';
 import 'package:kliq_movies/feature/profile/profile_screen.dart';
 
 @RoutePage()
@@ -28,7 +28,6 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     final index = ref.watch(bottomNavProvider);
     final currentUser = ref.watch(appControllerProvider).asData?.value;
     return Scaffold(
-      appBar: AppBar(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
         onTap: (value) {

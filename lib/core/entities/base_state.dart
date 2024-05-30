@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kliq_movies/core/app_setup/failure/failure.dart';
 part 'base_state.freezed.dart';
 
 @freezed
@@ -12,7 +13,7 @@ class BaseState<T> with _$BaseState<T> {
   const factory BaseState.loading() = BaseLoading<T>;
 
   /// Auth error state
-  const factory BaseState.error(String failure) = BaseError<T>;
+  const factory BaseState.error(Failure failure) = BaseError<T>;
 
   /// Auth success state
   const factory BaseState.success({T? data}) = BaseSuccess<T>;

@@ -20,7 +20,7 @@ mixin _$BaseState<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String failure) error,
+    required TResult Function(Failure failure) error,
     required TResult Function(T? data) success,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$BaseState<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String failure)? error,
+    TResult? Function(Failure failure)? error,
     TResult? Function(T? data)? success,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$BaseState<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String failure)? error,
+    TResult Function(Failure failure)? error,
     TResult Function(T? data)? success,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$BaseInitialImpl<T> implements BaseInitial<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String failure) error,
+    required TResult Function(Failure failure) error,
     required TResult Function(T? data) success,
   }) {
     return initial();
@@ -137,7 +137,7 @@ class _$BaseInitialImpl<T> implements BaseInitial<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String failure)? error,
+    TResult? Function(Failure failure)? error,
     TResult? Function(T? data)? success,
   }) {
     return initial?.call();
@@ -148,7 +148,7 @@ class _$BaseInitialImpl<T> implements BaseInitial<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String failure)? error,
+    TResult Function(Failure failure)? error,
     TResult Function(T? data)? success,
     required TResult orElse(),
   }) {
@@ -240,7 +240,7 @@ class _$BaseLoadingImpl<T> implements BaseLoading<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String failure) error,
+    required TResult Function(Failure failure) error,
     required TResult Function(T? data) success,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$BaseLoadingImpl<T> implements BaseLoading<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String failure)? error,
+    TResult? Function(Failure failure)? error,
     TResult? Function(T? data)? success,
   }) {
     return loading?.call();
@@ -262,7 +262,7 @@ class _$BaseLoadingImpl<T> implements BaseLoading<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String failure)? error,
+    TResult Function(Failure failure)? error,
     TResult Function(T? data)? success,
     required TResult orElse(),
   }) {
@@ -320,7 +320,7 @@ abstract class _$$BaseErrorImplCopyWith<T, $Res> {
           _$BaseErrorImpl<T> value, $Res Function(_$BaseErrorImpl<T>) then) =
       __$$BaseErrorImplCopyWithImpl<T, $Res>;
   @useResult
-  $Res call({String failure});
+  $Res call({Failure failure});
 }
 
 /// @nodoc
@@ -340,7 +340,7 @@ class __$$BaseErrorImplCopyWithImpl<T, $Res>
       null == failure
           ? _value.failure
           : failure // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Failure,
     ));
   }
 }
@@ -351,7 +351,7 @@ class _$BaseErrorImpl<T> implements BaseError<T> {
   const _$BaseErrorImpl(this.failure);
 
   @override
-  final String failure;
+  final Failure failure;
 
   @override
   String toString() {
@@ -380,7 +380,7 @@ class _$BaseErrorImpl<T> implements BaseError<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String failure) error,
+    required TResult Function(Failure failure) error,
     required TResult Function(T? data) success,
   }) {
     return error(failure);
@@ -391,7 +391,7 @@ class _$BaseErrorImpl<T> implements BaseError<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String failure)? error,
+    TResult? Function(Failure failure)? error,
     TResult? Function(T? data)? success,
   }) {
     return error?.call(failure);
@@ -402,7 +402,7 @@ class _$BaseErrorImpl<T> implements BaseError<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String failure)? error,
+    TResult Function(Failure failure)? error,
     TResult Function(T? data)? success,
     required TResult orElse(),
   }) {
@@ -451,9 +451,9 @@ class _$BaseErrorImpl<T> implements BaseError<T> {
 }
 
 abstract class BaseError<T> implements BaseState<T> {
-  const factory BaseError(final String failure) = _$BaseErrorImpl<T>;
+  const factory BaseError(final Failure failure) = _$BaseErrorImpl<T>;
 
-  String get failure;
+  Failure get failure;
   @JsonKey(ignore: true)
   _$$BaseErrorImplCopyWith<T, _$BaseErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
@@ -527,7 +527,7 @@ class _$BaseSuccessImpl<T> implements BaseSuccess<T> {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(String failure) error,
+    required TResult Function(Failure failure) error,
     required TResult Function(T? data) success,
   }) {
     return success(data);
@@ -538,7 +538,7 @@ class _$BaseSuccessImpl<T> implements BaseSuccess<T> {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
-    TResult? Function(String failure)? error,
+    TResult? Function(Failure failure)? error,
     TResult? Function(T? data)? success,
   }) {
     return success?.call(data);
@@ -549,7 +549,7 @@ class _$BaseSuccessImpl<T> implements BaseSuccess<T> {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(String failure)? error,
+    TResult Function(Failure failure)? error,
     TResult Function(T? data)? success,
     required TResult orElse(),
   }) {
