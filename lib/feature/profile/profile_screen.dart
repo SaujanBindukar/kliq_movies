@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/theme/application/theme_provider.dart';
@@ -9,13 +10,23 @@ class ProfileScreen extends HookConsumerWidget {
     final theme = ref.watch(themeProvider);
     return Scaffold(
       body: Center(
-        child: Switch(
-          value: theme == ThemeMode.dark,
-          onChanged: (value) {
-            ref.read(themeProvider.notifier).changeTheme(
-                  isDark: value,
-                );
-          },
+        child: Column(
+          children: [
+            Switch(
+              value: theme == ThemeMode.dark,
+              onChanged: (value) {
+                ref.read(themeProvider.notifier).changeTheme(
+                      isDark: value,
+                    );
+              },
+            ),
+            InkWell(
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+              },
+              child: const Text('Logout'),
+            )
+          ],
         ),
       ),
     );

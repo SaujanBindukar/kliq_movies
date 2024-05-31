@@ -1,13 +1,14 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
+import 'package:kliq_movies/feature/home/infrastructure/models/news_response.dart';
 import 'package:kliq_movies/feature/home/infrastructure/repository/home_repository.dart';
 
 final homeControllerProvider =
-    StateNotifierProvider<HomeController, BaseState>((ref) {
+    StateNotifierProvider<HomeController, BaseState<NewsResponse>>((ref) {
   return HomeController(ref: ref)..getNews();
 });
 
-class HomeController extends StateNotifier<BaseState> {
+class HomeController extends StateNotifier<BaseState<NewsResponse>> {
   final Ref ref;
   HomeController({
     required this.ref,
@@ -23,5 +24,21 @@ class HomeController extends StateNotifier<BaseState> {
       (failure) => BaseState.error(failure),
       (success) => BaseState.success(data: success),
     );
+  }
+
+  Future<void> favouriteNews({
+    required News news,
+  }) async {
+    if (state is BaseSuccess) {
+      final data = (state as BaseSuccess);
+      final newsResponse = data.data as NewsResponse;
+      final newsList = [...newsResponse.results];
+      final index = newsList.indexOf(news);
+      newsList[index] = newsList[index].copyWith(isFavourite: true);
+
+      state = BaseSuccess(
+        data: newsResponse.copyWith(results: newsList),
+      );
+    }
   }
 }

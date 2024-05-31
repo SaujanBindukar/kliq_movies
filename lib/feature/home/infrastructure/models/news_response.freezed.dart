@@ -20,8 +20,11 @@ NewsResponse _$NewsResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NewsResponse {
+  @HiveField(0)
   String get status => throw _privateConstructorUsedError;
+  @HiveField(1)
   int get totalResults => throw _privateConstructorUsedError;
+  @HiveField(2)
   List<News> get results => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +39,10 @@ abstract class $NewsResponseCopyWith<$Res> {
           NewsResponse value, $Res Function(NewsResponse) then) =
       _$NewsResponseCopyWithImpl<$Res, NewsResponse>;
   @useResult
-  $Res call({String status, int totalResults, List<News> results});
+  $Res call(
+      {@HiveField(0) String status,
+      @HiveField(1) int totalResults,
+      @HiveField(2) List<News> results});
 }
 
 /// @nodoc
@@ -81,7 +87,10 @@ abstract class _$$NewsResponseImplCopyWith<$Res>
       __$$NewsResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String status, int totalResults, List<News> results});
+  $Res call(
+      {@HiveField(0) String status,
+      @HiveField(1) int totalResults,
+      @HiveField(2) List<News> results});
 }
 
 /// @nodoc
@@ -120,21 +129,24 @@ class __$$NewsResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NewsResponseImpl implements _NewsResponse {
   const _$NewsResponseImpl(
-      {required this.status,
-      required this.totalResults,
-      final List<News> results = const []})
+      {@HiveField(0) required this.status,
+      @HiveField(1) required this.totalResults,
+      @HiveField(2) final List<News> results = const []})
       : _results = results;
 
   factory _$NewsResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$NewsResponseImplFromJson(json);
 
   @override
+  @HiveField(0)
   final String status;
   @override
+  @HiveField(1)
   final int totalResults;
   final List<News> _results;
   @override
   @JsonKey()
+  @HiveField(2)
   List<News> get results {
     if (_results is EqualUnmodifiableListView) return _results;
     // ignore: implicit_dynamic_type
@@ -178,18 +190,21 @@ class _$NewsResponseImpl implements _NewsResponse {
 
 abstract class _NewsResponse implements NewsResponse {
   const factory _NewsResponse(
-      {required final String status,
-      required final int totalResults,
-      final List<News> results}) = _$NewsResponseImpl;
+      {@HiveField(0) required final String status,
+      @HiveField(1) required final int totalResults,
+      @HiveField(2) final List<News> results}) = _$NewsResponseImpl;
 
   factory _NewsResponse.fromJson(Map<String, dynamic> json) =
       _$NewsResponseImpl.fromJson;
 
   @override
+  @HiveField(0)
   String get status;
   @override
+  @HiveField(1)
   int get totalResults;
   @override
+  @HiveField(2)
   List<News> get results;
   @override
   @JsonKey(ignore: true)
@@ -203,14 +218,22 @@ News _$NewsFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$News {
+  @HiveField(0)
   @JsonKey(name: 'article_id')
   String get articleId => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get link => throw _privateConstructorUsedError;
+  @HiveField(3)
   @JsonKey(name: 'image_url')
   String? get imageUrl => throw _privateConstructorUsedError;
+  @HiveField(4)
   String get pubDate => throw _privateConstructorUsedError;
+  @HiveField(5)
   String? get description => throw _privateConstructorUsedError;
+  @HiveField(6)
+  bool get isFavourite => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -223,12 +246,13 @@ abstract class $NewsCopyWith<$Res> {
       _$NewsCopyWithImpl<$Res, News>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'article_id') String articleId,
-      String title,
-      String link,
-      @JsonKey(name: 'image_url') String? imageUrl,
-      String pubDate,
-      String? description});
+      {@HiveField(0) @JsonKey(name: 'article_id') String articleId,
+      @HiveField(1) String title,
+      @HiveField(2) String link,
+      @HiveField(3) @JsonKey(name: 'image_url') String? imageUrl,
+      @HiveField(4) String pubDate,
+      @HiveField(5) String? description,
+      @HiveField(6) bool isFavourite});
 }
 
 /// @nodoc
@@ -250,6 +274,7 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
     Object? imageUrl = freezed,
     Object? pubDate = null,
     Object? description = freezed,
+    Object? isFavourite = null,
   }) {
     return _then(_value.copyWith(
       articleId: null == articleId
@@ -276,6 +301,10 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -288,12 +317,13 @@ abstract class _$$NewsImplCopyWith<$Res> implements $NewsCopyWith<$Res> {
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'article_id') String articleId,
-      String title,
-      String link,
-      @JsonKey(name: 'image_url') String? imageUrl,
-      String pubDate,
-      String? description});
+      {@HiveField(0) @JsonKey(name: 'article_id') String articleId,
+      @HiveField(1) String title,
+      @HiveField(2) String link,
+      @HiveField(3) @JsonKey(name: 'image_url') String? imageUrl,
+      @HiveField(4) String pubDate,
+      @HiveField(5) String? description,
+      @HiveField(6) bool isFavourite});
 }
 
 /// @nodoc
@@ -312,6 +342,7 @@ class __$$NewsImplCopyWithImpl<$Res>
     Object? imageUrl = freezed,
     Object? pubDate = null,
     Object? description = freezed,
+    Object? isFavourite = null,
   }) {
     return _then(_$NewsImpl(
       articleId: null == articleId
@@ -338,6 +369,10 @@ class __$$NewsImplCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
+      isFavourite: null == isFavourite
+          ? _value.isFavourite
+          : isFavourite // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -346,34 +381,45 @@ class __$$NewsImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$NewsImpl implements _News {
   const _$NewsImpl(
-      {@JsonKey(name: 'article_id') required this.articleId,
-      required this.title,
-      required this.link,
-      @JsonKey(name: 'image_url') this.imageUrl,
-      required this.pubDate,
-      this.description});
+      {@HiveField(0) @JsonKey(name: 'article_id') required this.articleId,
+      @HiveField(1) required this.title,
+      @HiveField(2) required this.link,
+      @HiveField(3) @JsonKey(name: 'image_url') this.imageUrl,
+      @HiveField(4) required this.pubDate,
+      @HiveField(5) this.description,
+      @HiveField(6) this.isFavourite = false});
 
   factory _$NewsImpl.fromJson(Map<String, dynamic> json) =>
       _$$NewsImplFromJson(json);
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'article_id')
   final String articleId;
   @override
+  @HiveField(1)
   final String title;
   @override
+  @HiveField(2)
   final String link;
   @override
+  @HiveField(3)
   @JsonKey(name: 'image_url')
   final String? imageUrl;
   @override
+  @HiveField(4)
   final String pubDate;
   @override
+  @HiveField(5)
   final String? description;
+  @override
+  @JsonKey()
+  @HiveField(6)
+  final bool isFavourite;
 
   @override
   String toString() {
-    return 'News(articleId: $articleId, title: $title, link: $link, imageUrl: $imageUrl, pubDate: $pubDate, description: $description)';
+    return 'News(articleId: $articleId, title: $title, link: $link, imageUrl: $imageUrl, pubDate: $pubDate, description: $description, isFavourite: $isFavourite)';
   }
 
   @override
@@ -389,13 +435,15 @@ class _$NewsImpl implements _News {
                 other.imageUrl == imageUrl) &&
             (identical(other.pubDate, pubDate) || other.pubDate == pubDate) &&
             (identical(other.description, description) ||
-                other.description == description));
+                other.description == description) &&
+            (identical(other.isFavourite, isFavourite) ||
+                other.isFavourite == isFavourite));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, articleId, title, link, imageUrl, pubDate, description);
+  int get hashCode => Object.hash(runtimeType, articleId, title, link, imageUrl,
+      pubDate, description, isFavourite);
 
   @JsonKey(ignore: true)
   @override
@@ -413,29 +461,41 @@ class _$NewsImpl implements _News {
 
 abstract class _News implements News {
   const factory _News(
-      {@JsonKey(name: 'article_id') required final String articleId,
-      required final String title,
-      required final String link,
-      @JsonKey(name: 'image_url') final String? imageUrl,
-      required final String pubDate,
-      final String? description}) = _$NewsImpl;
+      {@HiveField(0)
+      @JsonKey(name: 'article_id')
+      required final String articleId,
+      @HiveField(1) required final String title,
+      @HiveField(2) required final String link,
+      @HiveField(3) @JsonKey(name: 'image_url') final String? imageUrl,
+      @HiveField(4) required final String pubDate,
+      @HiveField(5) final String? description,
+      @HiveField(6) final bool isFavourite}) = _$NewsImpl;
 
   factory _News.fromJson(Map<String, dynamic> json) = _$NewsImpl.fromJson;
 
   @override
+  @HiveField(0)
   @JsonKey(name: 'article_id')
   String get articleId;
   @override
+  @HiveField(1)
   String get title;
   @override
+  @HiveField(2)
   String get link;
   @override
+  @HiveField(3)
   @JsonKey(name: 'image_url')
   String? get imageUrl;
   @override
+  @HiveField(4)
   String get pubDate;
   @override
+  @HiveField(5)
   String? get description;
+  @override
+  @HiveField(6)
+  bool get isFavourite;
   @override
   @JsonKey(ignore: true)
   _$$NewsImplCopyWith<_$NewsImpl> get copyWith =>
