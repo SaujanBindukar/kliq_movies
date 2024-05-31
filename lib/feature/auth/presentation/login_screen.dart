@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
+import 'package:kliq_movies/core/route/app_router.dart';
 import 'package:kliq_movies/core/theme/application/theme_provider.dart';
 import 'package:kliq_movies/core/utils/validators.dart';
 import 'package:kliq_movies/core/widgets/custom_button.dart';
@@ -118,7 +119,9 @@ class _SingupNavigationWidget extends ConsumerWidget {
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            context.router.push(const RegisterRoute());
+          },
           child: Text(
             'Sign Up',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(

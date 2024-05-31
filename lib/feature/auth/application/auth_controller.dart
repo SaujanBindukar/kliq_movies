@@ -30,4 +30,21 @@ class AuthController extends StateNotifier<BaseState> {
       (success) => BaseState<User>.success(data: success),
     );
   }
+
+  void signUp({
+    required String email,
+    required String password,
+    required String name,
+  }) async {
+    state = const BaseState.loading();
+    final response = await authRepository.signUp(
+      email: email,
+      password: password,
+      name: name,
+    );
+    state = response.fold(
+      (failure) => BaseState.error(failure),
+      (success) => BaseState<User>.success(data: success),
+    );
+  }
 }

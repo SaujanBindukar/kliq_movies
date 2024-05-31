@@ -30,48 +30,40 @@ class _FavouriteScreenState extends ConsumerState<FavouriteScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Your Favourite',
-                    style: textStyle.headlineLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.filter_list_sharp),
-                  )
-                ],
+              Text(
+                'Your Favourite',
+                style: textStyle.headlineLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               Expanded(
-                child: SingleChildScrollView(
-                  child: favouriteData.maybeMap(
-                    initial: (_) =>
-                        const Center(child: CircularProgressIndicator()),
-                    loading: (_) =>
-                        const Center(child: CircularProgressIndicator()),
-                    orElse: () => const SizedBox(),
-                    error: (error) => Text(error.failure.reason),
-                    success: (data) {
-                      final newsData = data.data ?? [];
-                      if (newsData.isEmpty) {
-                        return const Center(
-                            child: Text('You have no favourite news.'));
-                      }
-                      return ListView.builder(
-                        itemCount: newsData.length,
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          final news = newsData[index];
-                          return NewsListTile(newsData: news);
-                        },
-                      );
-                    },
+                child: favouriteData.maybeMap(
+                  initial: (_) => const CircularProgressIndicator(),
+                  loading: (_) => const Center(
+                    child: CircularProgressIndicator(),
                   ),
+                  orElse: () => const SizedBox(),
+                  error: (error) => Text(error.failure.reason),
+                  success: (data) {
+                    final newsData = data.data ?? [];
+                    if (newsData.isEmpty) {
+                      return const Center(
+                        child: Text('You have no favourite news.'),
+                      );
+                    }
+                    return ListView.builder(
+                      itemCount: newsData.length,
+                      shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        final news = newsData[index];
+                        return NewsListTile(
+                          newsData: news,
+                        );
+                      },
+                    );
+                  },
                 ),
               ),
             ],

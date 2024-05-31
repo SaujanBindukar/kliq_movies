@@ -6,7 +6,7 @@ import 'package:kliq_movies/feature/auth/application/app_controller.dart';
 import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
 import 'package:kliq_movies/feature/favourite/presentation/favourite_screen.dart';
 import 'package:kliq_movies/feature/home/presentation/home_screen.dart';
-import 'package:kliq_movies/feature/profile/profile_screen.dart';
+import 'package:kliq_movies/feature/profile/presentation/profile_screen.dart';
 
 @RoutePage()
 class DashboardScreen extends StatefulHookConsumerWidget {
