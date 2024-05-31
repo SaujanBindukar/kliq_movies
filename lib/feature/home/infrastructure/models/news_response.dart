@@ -6,8 +6,8 @@ part 'news_response.freezed.dart';
 
 part 'news_response.g.dart';
 
-@HiveType(typeId: HiveBox.favouriteNewsResponseBoxId)
 @freezed
+@HiveType(typeId: HiveBox.favouriteNewsResponseBoxId)
 class NewsResponse with _$NewsResponse {
   const factory NewsResponse({
     @HiveField(0) required String status,
@@ -18,8 +18,8 @@ class NewsResponse with _$NewsResponse {
       _$NewsResponseFromJson(json);
 }
 
-@HiveType(typeId: HiveBox.favouriteNewsBoxId)
 @freezed
+@HiveType(typeId: HiveBox.favouriteNewsBoxId)
 class News with _$News {
   const factory News({
     @HiveField(0) @JsonKey(name: 'article_id') required String articleId,

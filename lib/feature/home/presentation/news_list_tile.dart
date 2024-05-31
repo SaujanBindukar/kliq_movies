@@ -111,9 +111,9 @@ class NewsListTile extends HookConsumerWidget {
             child: InkWell(
               onTap: () {
                 if (currentUser is BaseSuccess) {
-                  ref
-                      .read(homeControllerProvider.notifier)
-                      .favouriteNews(news: newsData);
+                  ref.read(homeControllerProvider.notifier).favouriteNews(
+                        news: newsData,
+                      );
                 } else {
                   //no login, Navigate to login screen
                   context.router.push(const LoginRoute());

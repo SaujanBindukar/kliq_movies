@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
+import 'package:kliq_movies/feature/favourite/application/favourite_controller.dart';
 import 'package:kliq_movies/feature/home/infrastructure/models/news_response.dart';
 import 'package:kliq_movies/feature/home/infrastructure/repository/home_repository.dart';
 
@@ -34,8 +35,14 @@ class HomeController extends StateNotifier<BaseState<NewsResponse>> {
       final newsResponse = data.data as NewsResponse;
       final newsList = [...newsResponse.results];
       final index = newsList.indexOf(news);
-      newsList[index] = newsList[index].copyWith(isFavourite: true);
-
+      if (index >= 0) {
+        newsList[index] = newsList[index].copyWith(
+          isFavourite: !newsList[index].isFavourite,
+        );
+      }
+      await ref.read(favouriteControllerProvider.notifier).addFavouriteNews(
+            news: news,
+          );
       state = BaseSuccess(
         data: newsResponse.copyWith(results: newsList),
       );

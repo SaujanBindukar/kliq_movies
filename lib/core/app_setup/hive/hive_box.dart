@@ -5,7 +5,7 @@ class HiveBox {
   static const String favouriteNewsBox = 'favoriteMovieBox';
 
   static const int favouriteNewsResponseBoxId = 1;
-  static const int favouriteNewsBoxId = 1;
+  static const int favouriteNewsBoxId = 2;
 
   static const List<String> hiveBoxes = [
     tokenBox,

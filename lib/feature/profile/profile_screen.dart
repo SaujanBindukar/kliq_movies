@@ -9,24 +9,26 @@ class ProfileScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = ref.watch(themeProvider);
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            Switch(
-              value: theme == ThemeMode.dark,
-              onChanged: (value) {
-                ref.read(themeProvider.notifier).changeTheme(
-                      isDark: value,
-                    );
-              },
-            ),
-            InkWell(
-              onTap: () async {
-                await FirebaseAuth.instance.signOut();
-              },
-              child: const Text('Logout'),
-            )
-          ],
+      body: SafeArea(
+        child: Center(
+          child: Column(
+            children: [
+              Switch(
+                value: theme == ThemeMode.dark,
+                onChanged: (value) {
+                  ref.read(themeProvider.notifier).changeTheme(
+                        isDark: value,
+                      );
+                },
+              ),
+              InkWell(
+                onTap: () async {
+                  // await FirebaseAuth.instance.signOut();
+                },
+                child: const Text('Logout'),
+              )
+            ],
+          ),
         ),
       ),
     );
