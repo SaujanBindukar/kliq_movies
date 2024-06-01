@@ -32,11 +32,12 @@ class NewsListTile extends HookConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
+                  Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.center,
                     children: [
                       Text(
                         newsData.creator.isNotEmpty
-                            ? newsData.category.first
+                            ? newsData.creator.first
                             : 'Unknown',
                         style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.bold,
@@ -153,18 +154,18 @@ class NewsImage extends StatelessWidget {
     return ClipRRect(
       borderRadius: BorderRadius.circular(8),
       child: CachedNetworkImage(
-        imageUrl: newsData.imageUrl ?? '',
+        imageUrl: newsData.imageUrl!,
         height: 150,
+        width: 120,
         fit: BoxFit.cover,
         errorWidget: (context, _, __) {
-          return CustomShimmer(
-            widget: Container(
-              decoration: const BoxDecoration(
-                color: Colors.grey,
-              ),
-              height: 80,
-              child: const Icon(Icons.error),
+          return Container(
+            decoration: const BoxDecoration(
+              color: Colors.grey,
             ),
+            height: 150,
+            width: 120,
+            child: const Icon(Icons.error),
           );
         },
         progressIndicatorBuilder: (context, url, progress) {
@@ -179,7 +180,6 @@ class NewsImage extends StatelessWidget {
             ),
           );
         },
-        width: 120,
       ),
     );
   }

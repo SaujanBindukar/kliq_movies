@@ -16,6 +16,9 @@ final dioProvider = Provider<ApiServices>((ref) {
   dio.options.connectTimeout = const Duration(seconds: 30); //30 sec
   dio.options.receiveTimeout = const Duration(seconds: 30);
   dio.options.contentType = Headers.jsonContentType;
+  dio.options.queryParameters = {
+    'apikey': 'pub_45104daf12d9ee0c8bbdded605d6590c54ee4',
+  };
   dio.options.headers = <String, dynamic>{
     'Accept': Headers.jsonContentType,
   };

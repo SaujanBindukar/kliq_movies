@@ -18,9 +18,15 @@ class HomeController extends StateNotifier<BaseState<NewsResponse>> {
   final Ref ref;
   IHomeRepository get _homeRepository => ref.read(homeRepositoryProvider);
 
-  Future<void> getNews() async {
+  Future<void> getNews({
+    String? category,
+    String? sentiment,
+  }) async {
     state = const BaseState.loading();
-    final response = await _homeRepository.getNews();
+    final response = await _homeRepository.getNews(
+      category: category,
+      sentiment: sentiment,
+    );
     state = response.fold(
       BaseState.error,
       (success) => BaseState.success(data: success),

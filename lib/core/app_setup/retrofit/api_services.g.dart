@@ -22,6 +22,7 @@ class _ApiServices implements ApiServices {
   Future<NewsResponse> getNews({
     required String langugage,
     String? category,
+    String? sentiment,
     String? query,
     required int image,
     String? page,
@@ -30,6 +31,7 @@ class _ApiServices implements ApiServices {
     final queryParameters = <String, dynamic>{
       r'language': langugage,
       r'category': category,
+      r'sentiment': sentiment,
       r'q': query,
       r'image': image,
       r'page': page,

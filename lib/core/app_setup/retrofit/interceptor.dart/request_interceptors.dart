@@ -11,9 +11,6 @@ class RequestInterceptors extends InterceptorsWrapper {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    options.queryParameters = {
-      'apikey': 'pub_45104daf12d9ee0c8bbdded605d6590c54ee4',
-    };
     super.onRequest(options, handler);
   }
 }

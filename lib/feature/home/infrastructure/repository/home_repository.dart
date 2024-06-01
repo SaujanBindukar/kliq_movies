@@ -14,6 +14,7 @@ final homeRepositoryProvider = Provider<IHomeRepository>((ref) {
 abstract class IHomeRepository {
   Future<Either<Failure, NewsResponse>> getNews({
     String? category,
+    String? sentiment,
   });
 }
 
@@ -26,11 +27,14 @@ class HomeRepository implements IHomeRepository {
   @override
   Future<Either<Failure, NewsResponse>> getNews({
     String? category,
+    String? sentiment,
   }) async {
     try {
       final response = await _retroFit.getNews(
         langugage: 'en',
-        image: 1, //news with featured image
+        category: category,
+        sentiment: sentiment,
+        image: 1,
       );
       return Right(response);
     } on DioException catch (error) {

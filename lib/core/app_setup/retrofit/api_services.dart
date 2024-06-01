@@ -13,6 +13,7 @@ abstract class ApiServices {
   Future<NewsResponse> getNews({
     @Query('language') required String langugage,
     @Query('category') String? category,
+    @Query('sentiment') String? sentiment,
     @Query('q') String? query,
     @Query('image') required int image,
     @Query('page') String? page,

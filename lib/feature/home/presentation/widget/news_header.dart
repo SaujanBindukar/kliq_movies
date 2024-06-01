@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kliq_movies/feature/home/presentation/widget/news_filter_sheet.dart';
 
 class NewsHeader extends StatelessWidget {
   const NewsHeader({super.key});
@@ -19,7 +20,14 @@ class NewsHeader extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           IconButton.outlined(
-            onPressed: () {},
+            onPressed: () {
+              showModalBottomSheet<void>(
+                context: context,
+                builder: (context) {
+                  return const NewsFilterSheet();
+                },
+              );
+            },
             icon: const Icon(
               Icons.filter_list,
               size: 30,
