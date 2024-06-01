@@ -4,7 +4,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
 import 'package:kliq_movies/core/route/app_router.dart';
-import 'package:kliq_movies/core/theme/application/theme_provider.dart';
 import 'package:kliq_movies/core/utils/validators.dart';
 import 'package:kliq_movies/core/widgets/custom_button.dart';
 import 'package:kliq_movies/core/widgets/custom_textfield.dart';
@@ -37,7 +36,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       }
     });
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(

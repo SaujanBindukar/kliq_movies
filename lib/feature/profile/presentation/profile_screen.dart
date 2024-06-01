@@ -1,12 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/route/app_router.dart';
 import 'package:kliq_movies/core/theme/application/theme_provider.dart';
 import 'package:kliq_movies/core/widgets/custom_button.dart';
-import 'package:kliq_movies/core/widgets/custom_shimmer.dart';
 import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
 import 'package:kliq_movies/feature/profile/application/profile_controller.dart';
 import 'package:kliq_movies/feature/profile/presentation/profile_laoding_widget.dart';
