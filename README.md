@@ -63,6 +63,11 @@ lib
 ```
 
 
+
+https://github.com/SaujanBindukar/kliq_movies/assets/34705432/fbfa21de-2817-4fb7-9df5-e98f52501588
+
+
+
 ## Previews and Screnshots
 
 | Light Mode Screen  |  Dark Mode Screen |
