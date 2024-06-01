@@ -104,17 +104,22 @@ class Footer extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Chip(
+          color: WidgetStatePropertyAll(
+            colorScheme.primary.withOpacity(0.2),
+          ),
           padding: const EdgeInsets.all(2),
           label: Text(
             newsData.category.isNotEmpty
                 ? newsData.category.first.toUpperCase()
                 : 'Top'.toUpperCase(),
             style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                  color: Colors.grey,
+                  color: colorScheme.primary,
+                  fontWeight: FontWeight.bold,
                 ),
           ),
         ),

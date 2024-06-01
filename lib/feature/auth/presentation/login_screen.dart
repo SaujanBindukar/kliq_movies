@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
+import 'package:kliq_movies/core/extensions/context_extension.dart';
 import 'package:kliq_movies/core/route/app_router.dart';
 import 'package:kliq_movies/core/utils/validators.dart';
 import 'package:kliq_movies/core/widgets/custom_button.dart';
 import 'package:kliq_movies/core/widgets/custom_textfield.dart';
 import 'package:kliq_movies/feature/auth/application/auth_controller.dart';
+import 'package:kliq_movies/feature/auth/presentation/app_logo_widget.dart';
+import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulHookConsumerWidget {
@@ -25,16 +28,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     final passwordController = useTextEditingController();
     ref.listen(authControllerProvider, (prev, next) {
       if (next is BaseError) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text(next.failure.reason),
-          ),
-        );
+        context.showFlushBar(message: next.failure.reason);
       }
       if (next is BaseSuccess) {
         Navigator.of(context).pop();
+        ref.read(bottomNavProvider.notifier).changeIndex(index: 0);
+        context.showFlushBar(message: 'Login Success');
       }
     });
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.surface,
       appBar: AppBar(),
@@ -46,9 +48,13 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const AppLogoWidget(),
                 Text(
-                  "Welcome to Kliq Movies",
-                  style: Theme.of(context).textTheme.titleLarge,
+                  "Sign in to your\nAccount",
+                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        fontWeight: FontWeight.w600,
+                        color: Theme.of(context).colorScheme.secondary,
+                      ),
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -115,7 +121,9 @@ class _SingupNavigationWidget extends ConsumerWidget {
       children: [
         Text(
           "Don't have an account? ",
-          style: Theme.of(context).textTheme.bodyMedium?.copyWith(),
+          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).colorScheme.secondary,
+              ),
         ),
         InkWell(
           onTap: () {
@@ -125,6 +133,7 @@ class _SingupNavigationWidget extends ConsumerWidget {
             'Sign Up',
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                   fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.secondary,
                 ),
           ),
         ),

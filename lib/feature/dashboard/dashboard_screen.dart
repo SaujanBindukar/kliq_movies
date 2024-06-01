@@ -28,15 +28,17 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
   Widget build(BuildContext context) {
     final index = ref.watch(bottomNavProvider);
     final currentUser = ref.watch(appControllerProvider).asData?.value;
+    final colorTheme = Theme.of(context).colorScheme;
     return Scaffold(
-      extendBody: true,
       bottomNavigationBar: SalomonBottomBar(
-        backgroundColor: Theme.of(context).colorScheme.surface,
+        backgroundColor: colorTheme.surface,
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         currentIndex: index,
         onTap: (value) {
+          //change the index of bottomNav through state notifier
           ref.read(bottomNavProvider.notifier).changeIndex(index: value);
         },
+        selectedItemColor: colorTheme.primary,
         items: [
           SalomonBottomBarItem(
             icon: const Icon(Icons.home),
@@ -46,6 +48,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             icon: const Icon(Icons.favorite),
             title: const Text('Favourite'),
           ),
+          //if the user is loggedin
           if (currentUser is BaseSuccess)
             SalomonBottomBarItem(
               icon: const Icon(Icons.person),

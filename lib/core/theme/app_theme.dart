@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
+    fontFamily: 'Inter',
     useMaterial3: true,
     colorScheme: flexSchemeLight,
     inputDecorationTheme: InputDecorationTheme(
@@ -23,18 +24,10 @@ class AppTheme {
         ),
       ),
     ),
-    textTheme: const TextTheme(
-        titleLarge: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-        headlineSmall: TextStyle(
-          fontWeight: FontWeight.w700,
-        )
-        // you can add others here
-        ),
   );
 
   static final darkTheme = ThemeData(
+    fontFamily: 'Inter',
     useMaterial3: true,
     colorScheme: flexSchemeDark,
     inputDecorationTheme: InputDecorationTheme(
@@ -56,19 +49,9 @@ class AppTheme {
         ),
       ),
     ),
-    textTheme: const TextTheme(
-        titleLarge: TextStyle(
-          fontWeight: FontWeight.bold,
-        ),
-        headlineSmall: TextStyle(fontWeight: FontWeight.w700)
-
-        // you can add others here
-        ),
   );
 }
 
-// Light and dark ColorSchemes made by FlexColorScheme v7.3.1.
-// These ColorScheme objects require Flutter 3.7 or later.
 const ColorScheme flexSchemeLight = ColorScheme(
   brightness: Brightness.light,
   primary: Color(0xff223a5e),

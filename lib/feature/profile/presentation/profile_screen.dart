@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kliq_movies/core/extensions/context_extension.dart';
 import 'package:kliq_movies/core/route/app_router.dart';
 import 'package:kliq_movies/core/theme/application/theme_provider.dart';
 import 'package:kliq_movies/core/widgets/custom_button.dart';
@@ -155,6 +156,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                           ref
                               .read(bottomNavProvider.notifier)
                               .changeIndex(index: 0);
+                          context.showFlushBar(message: 'Logged out!');
                           await FirebaseAuth.instance.signOut().then(
                             (value) {
                               context.router.popAndPush(const DashboardRoute());
