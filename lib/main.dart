@@ -11,13 +11,13 @@ import 'package:kliq_movies/my_observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load();
 
   await Future.wait([
     Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     ),
     HiveSetup.initHive(),
+    dotenv.load(),
   ]);
   runApp(
     ProviderScope(
