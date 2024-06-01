@@ -7,13 +7,11 @@ import 'package:path_provider/path_provider.dart';
 
 /// Setup class for hive
 class HiveSetup {
-  // static Future _init;
-
   // Private constructor
   HiveSetup._();
 
-  ///
-  static Future initHive() async {
+  //initialize hive and its adapter
+  static Future<void> initHive() async {
     try {
       final dbPath = await databasePath;
       Hive.init(dbPath);
@@ -26,7 +24,7 @@ class HiveSetup {
 
 const String _dbDirectory = 'KliqHive';
 
-///
+///path of local device
 Future<String> get databasePath async {
   final appDir = await getApplicationDocumentsDirectory();
   final databaseDir = Directory('${appDir.path}/$_dbDirectory');

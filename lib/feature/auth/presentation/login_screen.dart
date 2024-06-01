@@ -50,7 +50,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               children: [
                 const AppLogoWidget(),
                 Text(
-                  "Sign in to your\nAccount",
+                  'Sign in to your\nAccount',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w600,
                         color: Theme.of(context).colorScheme.secondary,
@@ -116,7 +116,6 @@ class _SingupNavigationWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(

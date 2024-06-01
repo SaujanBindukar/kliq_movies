@@ -9,10 +9,10 @@ final favouriteControllerProvider =
 });
 
 class FavouriteController extends StateNotifier<BaseState<List<News>>> {
-  Ref ref;
   FavouriteController({
     required this.ref,
   }) : super(const BaseState.initial());
+  Ref ref;
 
   IFavouriteRepository get favouriteRepository =>
       ref.read(favouriteRepositoryProvider);
@@ -20,13 +20,12 @@ class FavouriteController extends StateNotifier<BaseState<List<News>>> {
   Future<void> getFavouriteNews() async {
     state = const BaseState.loading();
     final response = await favouriteRepository.getFavouriteNews();
-    await Future.delayed(const Duration(seconds: 0));
     state = BaseState.success(data: response);
   }
 
   Future<void> addFavouriteNews({required News news}) async {
     final localData = await favouriteRepository.getFavouriteNews();
-    List<News> localList = List.from(localData);
+    var localList = List<News>.from(localData);
     if (localList.contains(news)) {
       localList.remove(news);
     } else {

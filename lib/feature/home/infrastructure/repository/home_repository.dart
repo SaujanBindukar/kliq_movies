@@ -4,7 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/app_setup/failure/failure.dart';
 
 import 'package:kliq_movies/core/app_setup/retrofit/api_services.dart';
-import 'package:kliq_movies/core/app_setup/retrofit/dio_client.dart';
+import 'package:kliq_movies/core/app_setup/retrofit/retrofit_client.dart';
 import 'package:kliq_movies/feature/home/infrastructure/models/news_response.dart';
 
 final homeRepositoryProvider = Provider<IHomeRepository>((ref) {
@@ -12,19 +12,26 @@ final homeRepositoryProvider = Provider<IHomeRepository>((ref) {
 });
 
 abstract class IHomeRepository {
-  Future<Either<Failure, NewsResponse>> getNews();
+  Future<Either<Failure, NewsResponse>> getNews({
+    String? category,
+  });
 }
 
 class HomeRepository implements IHomeRepository {
-  final Ref ref;
   HomeRepository({
     required this.ref,
   });
+  final Ref ref;
   ApiServices get _retroFit => ref.read(dioProvider);
   @override
-  Future<Either<Failure, NewsResponse>> getNews() async {
+  Future<Either<Failure, NewsResponse>> getNews({
+    String? category,
+  }) async {
     try {
-      final response = await _retroFit.getNews();
+      final response = await _retroFit.getNews(
+        langugage: 'en',
+        image: 1, //news with featured image
+      );
       return Right(response);
     } on DioException catch (error) {
       return Left(error.toFailure);

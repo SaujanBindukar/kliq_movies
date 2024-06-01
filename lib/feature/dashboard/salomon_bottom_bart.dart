@@ -1,12 +1,14 @@
+// ignore_for_file: inference_failure_on_function_return_type
+
 import 'package:flutter/material.dart';
 
 class SalomonBottomBar extends StatelessWidget {
   const SalomonBottomBar({
     super.key,
     required this.items,
-    this.backgroundColor,
     this.currentIndex = 0,
     this.onTap,
+    this.backgroundColor,
     this.selectedItemColor,
     this.unselectedItemColor,
     this.selectedColorOpacity,
@@ -59,12 +61,13 @@ class SalomonBottomBar extends StatelessWidget {
 
                   return Material(
                     color: Color.lerp(
-                        selectedColor.withOpacity(0.0),
-                        selectedColor.withOpacity(selectedColorOpacity ?? 0.1),
-                        t),
+                      selectedColor.withOpacity(0),
+                      selectedColor.withOpacity(selectedColorOpacity ?? 0.1),
+                      t,
+                    ),
                     shape: itemShape,
                     child: InkWell(
-                      onTap: () => onTap?.call(items.indexOf(item)),
+                      onTap: () => onTap!.call(items.indexOf(item)),
                       customBorder: itemShape,
                       focusColor: selectedColor.withOpacity(0.1),
                       highlightColor: selectedColor.withOpacity(0.1),
@@ -80,7 +83,10 @@ class SalomonBottomBar extends StatelessWidget {
                             IconTheme(
                               data: IconThemeData(
                                 color: Color.lerp(
-                                    unselectedColor, selectedColor, t),
+                                  unselectedColor,
+                                  selectedColor,
+                                  t,
+                                ),
                                 size: 24,
                               ),
                               child: items.indexOf(item) == currentIndex
@@ -92,23 +98,26 @@ class SalomonBottomBar extends StatelessWidget {
                               child: SizedBox(
                                 height: 20,
                                 child: Align(
-                                  alignment: const Alignment(-0.2, 0.0),
+                                  alignment: const Alignment(-0.2, 0),
                                   widthFactor: t,
                                   child: Padding(
                                     padding: Directionality.of(context) ==
                                             TextDirection.ltr
                                         ? EdgeInsets.only(
                                             left: itemPadding.left / 2,
-                                            right: itemPadding.right)
+                                            right: itemPadding.right,
+                                          )
                                         : EdgeInsets.only(
                                             left: itemPadding.left,
-                                            right: itemPadding.right / 2),
+                                            right: itemPadding.right / 2,
+                                          ),
                                     child: DefaultTextStyle(
                                       style: TextStyle(
                                         color: Color.lerp(
-                                            selectedColor.withOpacity(0.0),
-                                            selectedColor,
-                                            t),
+                                          selectedColor.withOpacity(0),
+                                          selectedColor,
+                                          t,
+                                        ),
                                         fontWeight: FontWeight.w600,
                                       ),
                                       child: item.title,
@@ -132,11 +141,6 @@ class SalomonBottomBar extends StatelessWidget {
 }
 
 class SalomonBottomBarItem {
-  final Widget icon;
-  final Widget? activeIcon;
-  final Widget title;
-  final Color? selectedColor;
-  final Color? unselectedColor;
   SalomonBottomBarItem({
     required this.icon,
     required this.title,
@@ -144,4 +148,9 @@ class SalomonBottomBarItem {
     this.unselectedColor,
     this.activeIcon,
   });
+  final Widget icon;
+  final Widget? activeIcon;
+  final Widget title;
+  final Color? selectedColor;
+  final Color? unselectedColor;
 }

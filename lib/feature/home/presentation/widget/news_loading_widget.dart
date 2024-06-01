@@ -60,7 +60,7 @@ class NewsLoadingWidget extends StatelessWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

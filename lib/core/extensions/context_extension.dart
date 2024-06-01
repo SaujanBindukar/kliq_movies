@@ -8,7 +8,7 @@ extension ContextExtension on BuildContext {
     bool error = false,
     int? duration,
   }) async {
-    Flushbar<void>(
+    await Flushbar<void>(
       backgroundColor: error
           ? Theme.of(this).colorScheme.error
           : Theme.of(this).primaryColor,
@@ -25,7 +25,6 @@ extension ContextExtension on BuildContext {
       ),
       duration: Duration(milliseconds: duration ?? 4000),
       borderRadius: BorderRadius.circular(10),
-      flushbarStyle: FlushbarStyle.FLOATING,
       margin: EdgeInsets.symmetric(
         horizontal: 16,
         vertical: verticalMargin ?? 20,

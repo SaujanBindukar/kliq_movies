@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get_time_ago/get_time_ago.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
 import 'package:kliq_movies/core/route/app_router.dart';
@@ -8,7 +9,6 @@ import 'package:kliq_movies/core/widgets/custom_shimmer.dart';
 import 'package:kliq_movies/feature/auth/application/app_controller.dart';
 import 'package:kliq_movies/feature/home/application/home_controller.dart';
 import 'package:kliq_movies/feature/home/infrastructure/models/news_response.dart';
-import 'package:get_time_ago/get_time_ago.dart';
 
 class NewsListTile extends HookConsumerWidget {
   const NewsListTile({
@@ -19,8 +19,7 @@ class NewsListTile extends HookConsumerWidget {
   final News newsData;
 
   @override
-  Widget build(BuildContext context, ref) {
-    final currentUser = ref.watch(appControllerProvider).asData?.value;
+  Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
       height: 220,
       child: Row(
@@ -80,12 +79,11 @@ class NewsListTile extends HookConsumerWidget {
                     ),
                   Footer(
                     newsData: newsData,
-                    currentUser: currentUser,
-                  )
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -96,15 +94,14 @@ class Footer extends ConsumerWidget {
   const Footer({
     super.key,
     required this.newsData,
-    required this.currentUser,
   });
 
   final News newsData;
-  final BaseState? currentUser;
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final colorScheme = Theme.of(context).colorScheme;
+    final currentUser = ref.watch(appControllerProvider).asData?.value;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -189,7 +186,7 @@ class NewsImage extends StatelessWidget {
 }
 
 String getTimeAgo({required String dateTime}) {
-  var convertedTimestamp = DateTime.parse(dateTime);
-  var result = GetTimeAgo.parse(convertedTimestamp);
+  final convertedTimestamp = DateTime.parse(dateTime);
+  final result = GetTimeAgo.parse(convertedTimestamp);
   return result;
 }

@@ -24,7 +24,7 @@ class NewsHeader extends StatelessWidget {
               Icons.filter_list,
               size: 30,
             ),
-          )
+          ),
         ],
       ),
     );

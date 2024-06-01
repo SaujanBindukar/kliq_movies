@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kliq_movies/core/app_setup/failure/failure.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
 import 'package:kliq_movies/feature/auth/infrastructure/repository/auth_repository.dart';
 
@@ -9,14 +10,14 @@ final authControllerProvider =
 });
 
 class AuthController extends StateNotifier<BaseState> {
-  Ref ref;
   AuthController({
     required this.ref,
   }) : super(const BaseState.initial());
+  Ref ref;
 
   IAuthRepository get authRepository => ref.read(authRepositoryProvider);
 
-  void signInWithEmailAndPassword({
+  Future<void> signInWithEmailAndPassword({
     required String email,
     required String password,
   }) async {
@@ -26,12 +27,12 @@ class AuthController extends StateNotifier<BaseState> {
       password: password,
     );
     state = response.fold(
-      (failure) => BaseState.error(failure),
+      BaseState<Failure>.error,
       (success) => BaseState<User>.success(data: success),
     );
   }
 
-  void signUp({
+  Future<void> signUp({
     required String email,
     required String password,
     required String name,
@@ -43,7 +44,7 @@ class AuthController extends StateNotifier<BaseState> {
       name: name,
     );
     state = response.fold(
-      (failure) => BaseState.error(failure),
+      BaseState.error,
       (success) => BaseState<User>.success(data: success),
     );
   }

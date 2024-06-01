@@ -19,9 +19,22 @@ class _ApiServices implements ApiServices {
   String? baseUrl;
 
   @override
-  Future<NewsResponse> getNews() async {
+  Future<NewsResponse> getNews({
+    required String langugage,
+    String? category,
+    String? query,
+    required int image,
+    String? page,
+  }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'language': langugage,
+      r'category': category,
+      r'q': query,
+      r'image': image,
+      r'page': page,
+    };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
+  ///
   static final lightTheme = ThemeData(
     fontFamily: 'Inter',
     useMaterial3: true,

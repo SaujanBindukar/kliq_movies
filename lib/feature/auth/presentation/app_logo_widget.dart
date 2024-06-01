@@ -17,7 +17,7 @@ class AppLogoWidget extends StatelessWidget {
             color: textColor.secondary,
           ),
           Text(
-            "Kliq News",
+            'Kliq News',
             style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                   fontWeight: FontWeight.w600,
                   color: textColor.secondary,

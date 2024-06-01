@@ -31,7 +31,7 @@ class MyApp extends HookConsumerWidget {
   final _appRouter = AppRouter();
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeProvider);
     return MaterialApp.router(
       title: 'Kliq Movies',

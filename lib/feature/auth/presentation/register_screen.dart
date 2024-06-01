@@ -56,7 +56,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
               children: [
                 const AppLogoWidget(),
                 Text(
-                  "Sign up to your\nAccount",
+                  'Sign up to your\nAccount',
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         fontWeight: FontWeight.w600,
                         color: Theme.of(context).colorScheme.secondary,
@@ -120,11 +120,10 @@ class _SignInNavigationWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Already have an account? ",
+          'Already have an account?',
           style: Theme.of(context).textTheme.bodyMedium?.copyWith(),
         ),
         InkWell(

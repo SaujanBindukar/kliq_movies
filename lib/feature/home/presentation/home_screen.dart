@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/feature/home/application/home_controller.dart';
-import 'package:kliq_movies/feature/home/infrastructure/models/news_response.dart';
 import 'package:kliq_movies/feature/home/presentation/news_list_tile.dart';
 import 'package:kliq_movies/feature/home/presentation/widget/news_category.dart';
 import 'package:kliq_movies/feature/home/presentation/widget/news_header.dart';
@@ -13,7 +12,7 @@ class HomeScreen extends HookConsumerWidget {
   const HomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final newsData = ref.watch(homeControllerProvider);
 
     return Scaffold(
@@ -42,7 +41,7 @@ class HomeScreen extends HookConsumerWidget {
                         return Center(child: Text(failure.failure.reason));
                       },
                       success: (data) {
-                        final news = data.data as NewsResponse;
+                        final news = data.data!;
                         return ListView.separated(
                           physics: const NeverScrollableScrollPhysics(),
                           separatorBuilder: (context, index) {
@@ -63,7 +62,7 @@ class HomeScreen extends HookConsumerWidget {
                   ],
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

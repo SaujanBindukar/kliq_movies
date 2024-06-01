@@ -12,7 +12,6 @@ class CustomTextField extends StatefulWidget {
     this.textInputAction,
     this.textInputType,
     this.length,
-    this.onTap,
     this.textCapitalization,
     this.labelText,
     this.inputFormatters,
@@ -27,7 +26,6 @@ class CustomTextField extends StatefulWidget {
   final FocusNode? nextNode;
   final TextInputAction? textInputAction;
   final TextInputType? textInputType;
-  final Function()? onTap;
   final TextCapitalization? textCapitalization;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(String value)? onFieldSubmitted;
@@ -47,13 +45,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      padding: const EdgeInsets.symmetric(vertical: 8),
       child: TextFormField(
         autofillHints: widget.autofillHints,
         enableSuggestions: false,
         textCapitalization:
             widget.textCapitalization ?? TextCapitalization.none,
-        onTap: widget.onTap,
         controller: widget.controller,
         onFieldSubmitted: onFieldSubmitted,
         validator: widget.validator,

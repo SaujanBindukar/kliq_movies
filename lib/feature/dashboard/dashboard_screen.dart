@@ -53,7 +53,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             SalomonBottomBarItem(
               icon: const Icon(Icons.person),
               title: const Text('Profile'),
-            )
+            ),
         ],
       ),
       body: body[index],

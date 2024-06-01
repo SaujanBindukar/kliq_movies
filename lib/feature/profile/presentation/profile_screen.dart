@@ -156,7 +156,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                           ref
                               .read(bottomNavProvider.notifier)
                               .changeIndex(index: 0);
-                          context.showFlushBar(message: 'Logged out!');
+                          await context.showFlushBar(message: 'Logged out!');
                           await FirebaseAuth.instance.signOut().then(
                             (value) {
                               context.router.popAndPush(const DashboardRoute());
@@ -166,7 +166,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

@@ -10,20 +10,20 @@ final profileControllerProvider =
 });
 
 class ProfileController extends StateNotifier<BaseState<Users>> {
-  Ref ref;
   ProfileController({
     required this.ref,
   }) : super(const BaseState.initial());
+  Ref ref;
 
   IAuthRepository get authRepository => ref.read(authRepositoryProvider);
 
-  void getUserDetails() async {
+  Future<void> getUserDetails() async {
     state = const BaseState.loading();
     final response = await authRepository.getUserDetails(
       uuid: FirebaseAuth.instance.currentUser!.uid,
     );
     state = response.fold(
-      (failure) => BaseState.error(failure),
+      BaseState.error,
       (success) => BaseState<Users>.success(data: success),
     );
   }

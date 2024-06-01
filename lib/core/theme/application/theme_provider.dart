@@ -12,7 +12,7 @@ class ThemeProvider extends StateNotifier<ThemeMode> {
   }) : super(ThemeMode.dark);
   final Ref ref;
 
-  void changeTheme({
+  Future<void> changeTheme({
     required bool isDark,
   }) async {
     await ref
@@ -21,7 +21,7 @@ class ThemeProvider extends StateNotifier<ThemeMode> {
     state = isDark ? ThemeMode.dark : ThemeMode.light;
   }
 
-  void getTheme() async {
+  Future<void> getTheme() async {
     final theme = await ref.read(iThemeRepositoryProvider).getCurrentTheme();
     state = theme ? ThemeMode.dark : ThemeMode.light;
   }

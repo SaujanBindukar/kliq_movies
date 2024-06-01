@@ -10,19 +10,19 @@ final homeControllerProvider =
 });
 
 class HomeController extends StateNotifier<BaseState<NewsResponse>> {
-  final Ref ref;
   HomeController({
     required this.ref,
   }) : super(
           const BaseState.initial(),
         );
+  final Ref ref;
   IHomeRepository get _homeRepository => ref.read(homeRepositoryProvider);
 
   Future<void> getNews() async {
     state = const BaseState.loading();
     final response = await _homeRepository.getNews();
     state = response.fold(
-      (failure) => BaseState.error(failure),
+      BaseState.error,
       (success) => BaseState.success(data: success),
     );
   }
@@ -31,7 +31,7 @@ class HomeController extends StateNotifier<BaseState<NewsResponse>> {
     required News news,
   }) async {
     if (state is BaseSuccess) {
-      final data = (state as BaseSuccess);
+      final data = state as BaseSuccess;
       final newsResponse = data.data as NewsResponse;
       final newsList = [...newsResponse.results];
       final index = newsList.indexOf(news);
