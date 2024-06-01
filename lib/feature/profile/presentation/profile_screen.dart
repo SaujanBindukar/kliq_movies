@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:kliq_movies/core/app_setup/hive/hive_box.dart';
 import 'package:kliq_movies/core/extensions/context_extension.dart';
 import 'package:kliq_movies/core/route/app_router.dart';
 import 'package:kliq_movies/core/theme/application/theme_provider.dart';
@@ -152,17 +154,7 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
                         name: 'Logout',
                         backgroundColor:
                             Theme.of(context).colorScheme.secondary,
-                        onPressed: () async {
-                          ref
-                              .read(bottomNavProvider.notifier)
-                              .changeIndex(index: 0);
-                          await context.showFlushBar(message: 'Logged out!');
-                          await FirebaseAuth.instance.signOut().then(
-                            (value) {
-                              context.router.popAndPush(const DashboardRoute());
-                            },
-                          );
-                        },
+                        onPressed: logOut,
                       ),
                     ],
                   ),
@@ -172,6 +164,20 @@ class _ProfileScreenState extends ConsumerState<ProfileScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  Future<void> logOut() async {
+    ref.read(bottomNavProvider.notifier).changeIndex(index: 0);
+    await context.showFlushBar(message: 'Logged out!');
+    await FirebaseAuth.instance.signOut().then(
+      (value) async {
+        for (final box in HiveBox.hiveBoxes) {
+          await Hive.deleteBoxFromDisk(box);
+        }
+        await Hive.deleteFromDisk();
+        if (mounted) await context.router.popAndPush(const DashboardRoute());
+      },
     );
   }
 }

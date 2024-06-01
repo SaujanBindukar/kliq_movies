@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/app_setup/retrofit/api_services.dart';
 import 'package:kliq_movies/core/app_setup/retrofit/interceptor.dart/error_interceptors.dart';
@@ -11,13 +12,14 @@ final dioProvider = Provider<ApiServices>((ref) {
   final dio = Dio();
 
   final baseUrl = ref.watch(baseUrlProvider);
+  final apiKey = dotenv.env['API_KEY'];
 
   dio.options.baseUrl = baseUrl;
   dio.options.connectTimeout = const Duration(seconds: 30); //30 sec
   dio.options.receiveTimeout = const Duration(seconds: 30);
   dio.options.contentType = Headers.jsonContentType;
   dio.options.queryParameters = {
-    'apikey': 'pub_45104daf12d9ee0c8bbdded605d6590c54ee4',
+    'apikey': apiKey,
   };
   dio.options.headers = <String, dynamic>{
     'Accept': Headers.jsonContentType,
