@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
 import 'package:kliq_movies/feature/auth/application/app_controller.dart';
 import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
+import 'package:kliq_movies/feature/dashboard/salomon_bottom_bart.dart';
 import 'package:kliq_movies/feature/favourite/presentation/favourite_screen.dart';
 import 'package:kliq_movies/feature/home/presentation/home_screen.dart';
 import 'package:kliq_movies/feature/profile/presentation/profile_screen.dart';
@@ -28,24 +29,27 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     final index = ref.watch(bottomNavProvider);
     final currentUser = ref.watch(appControllerProvider).asData?.value;
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
+      extendBody: true,
+      bottomNavigationBar: SalomonBottomBar(
+        backgroundColor: Theme.of(context).colorScheme.surface,
+        margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         currentIndex: index,
         onTap: (value) {
           ref.read(bottomNavProvider.notifier).changeIndex(index: value);
         },
         items: [
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.home),
+            title: const Text('Home'),
           ),
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorite',
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.favorite),
+            title: const Text('Favourite'),
           ),
           if (currentUser is BaseSuccess)
-            const BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Account',
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.person),
+              title: const Text('Profile'),
             )
         ],
       ),

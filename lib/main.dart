@@ -10,18 +10,16 @@ import 'package:kliq_movies/my_observer.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
 
   await Future.wait([
+    Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    ),
     HiveSetup.initHive(),
   ]);
   runApp(
     ProviderScope(
-      observers: [
-        MyObserver(),
-      ],
+      observers: [MyObserver()],
       child: MyApp(),
     ),
   );

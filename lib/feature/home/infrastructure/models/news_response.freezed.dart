@@ -234,6 +234,10 @@ mixin _$News {
   String? get description => throw _privateConstructorUsedError;
   @HiveField(6)
   bool get isFavourite => throw _privateConstructorUsedError;
+  @HiveField(7)
+  List<String> get creator => throw _privateConstructorUsedError;
+  @HiveField(8)
+  List<String> get category => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -252,7 +256,9 @@ abstract class $NewsCopyWith<$Res> {
       @HiveField(3) @JsonKey(name: 'image_url') String? imageUrl,
       @HiveField(4) String pubDate,
       @HiveField(5) String? description,
-      @HiveField(6) bool isFavourite});
+      @HiveField(6) bool isFavourite,
+      @HiveField(7) List<String> creator,
+      @HiveField(8) List<String> category});
 }
 
 /// @nodoc
@@ -275,6 +281,8 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
     Object? pubDate = null,
     Object? description = freezed,
     Object? isFavourite = null,
+    Object? creator = null,
+    Object? category = null,
   }) {
     return _then(_value.copyWith(
       articleId: null == articleId
@@ -305,6 +313,14 @@ class _$NewsCopyWithImpl<$Res, $Val extends News>
           ? _value.isFavourite
           : isFavourite // ignore: cast_nullable_to_non_nullable
               as bool,
+      creator: null == creator
+          ? _value.creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ) as $Val);
   }
 }
@@ -323,7 +339,9 @@ abstract class _$$NewsImplCopyWith<$Res> implements $NewsCopyWith<$Res> {
       @HiveField(3) @JsonKey(name: 'image_url') String? imageUrl,
       @HiveField(4) String pubDate,
       @HiveField(5) String? description,
-      @HiveField(6) bool isFavourite});
+      @HiveField(6) bool isFavourite,
+      @HiveField(7) List<String> creator,
+      @HiveField(8) List<String> category});
 }
 
 /// @nodoc
@@ -343,6 +361,8 @@ class __$$NewsImplCopyWithImpl<$Res>
     Object? pubDate = null,
     Object? description = freezed,
     Object? isFavourite = null,
+    Object? creator = null,
+    Object? category = null,
   }) {
     return _then(_$NewsImpl(
       articleId: null == articleId
@@ -373,6 +393,14 @@ class __$$NewsImplCopyWithImpl<$Res>
           ? _value.isFavourite
           : isFavourite // ignore: cast_nullable_to_non_nullable
               as bool,
+      creator: null == creator
+          ? _value._creator
+          : creator // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      category: null == category
+          ? _value._category
+          : category // ignore: cast_nullable_to_non_nullable
+              as List<String>,
     ));
   }
 }
@@ -387,7 +415,11 @@ class _$NewsImpl implements _News {
       @HiveField(3) @JsonKey(name: 'image_url') this.imageUrl,
       @HiveField(4) required this.pubDate,
       @HiveField(5) this.description,
-      @HiveField(6) this.isFavourite = false});
+      @HiveField(6) this.isFavourite = false,
+      @HiveField(7) final List<String> creator = const [],
+      @HiveField(8) final List<String> category = const []})
+      : _creator = creator,
+        _category = category;
 
   factory _$NewsImpl.fromJson(Map<String, dynamic> json) =>
       _$$NewsImplFromJson(json);
@@ -416,10 +448,29 @@ class _$NewsImpl implements _News {
   @JsonKey()
   @HiveField(6)
   final bool isFavourite;
+  final List<String> _creator;
+  @override
+  @JsonKey()
+  @HiveField(7)
+  List<String> get creator {
+    if (_creator is EqualUnmodifiableListView) return _creator;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_creator);
+  }
+
+  final List<String> _category;
+  @override
+  @JsonKey()
+  @HiveField(8)
+  List<String> get category {
+    if (_category is EqualUnmodifiableListView) return _category;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_category);
+  }
 
   @override
   String toString() {
-    return 'News(articleId: $articleId, title: $title, link: $link, imageUrl: $imageUrl, pubDate: $pubDate, description: $description, isFavourite: $isFavourite)';
+    return 'News(articleId: $articleId, title: $title, link: $link, imageUrl: $imageUrl, pubDate: $pubDate, description: $description, isFavourite: $isFavourite, creator: $creator, category: $category)';
   }
 
   @override
@@ -437,13 +488,24 @@ class _$NewsImpl implements _News {
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.isFavourite, isFavourite) ||
-                other.isFavourite == isFavourite));
+                other.isFavourite == isFavourite) &&
+            const DeepCollectionEquality().equals(other._creator, _creator) &&
+            const DeepCollectionEquality().equals(other._category, _category));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, articleId, title, link, imageUrl,
-      pubDate, description, isFavourite);
+  int get hashCode => Object.hash(
+      runtimeType,
+      articleId,
+      title,
+      link,
+      imageUrl,
+      pubDate,
+      description,
+      isFavourite,
+      const DeepCollectionEquality().hash(_creator),
+      const DeepCollectionEquality().hash(_category));
 
   @JsonKey(ignore: true)
   @override
@@ -469,7 +531,9 @@ abstract class _News implements News {
       @HiveField(3) @JsonKey(name: 'image_url') final String? imageUrl,
       @HiveField(4) required final String pubDate,
       @HiveField(5) final String? description,
-      @HiveField(6) final bool isFavourite}) = _$NewsImpl;
+      @HiveField(6) final bool isFavourite,
+      @HiveField(7) final List<String> creator,
+      @HiveField(8) final List<String> category}) = _$NewsImpl;
 
   factory _News.fromJson(Map<String, dynamic> json) = _$NewsImpl.fromJson;
 
@@ -496,6 +560,12 @@ abstract class _News implements News {
   @override
   @HiveField(6)
   bool get isFavourite;
+  @override
+  @HiveField(7)
+  List<String> get creator;
+  @override
+  @HiveField(8)
+  List<String> get category;
   @override
   @JsonKey(ignore: true)
   _$$NewsImplCopyWith<_$NewsImpl> get copyWith =>

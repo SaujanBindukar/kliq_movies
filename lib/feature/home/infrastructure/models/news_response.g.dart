@@ -64,13 +64,15 @@ class NewsAdapter extends TypeAdapter<News> {
       pubDate: fields[4] as String,
       description: fields[5] as String?,
       isFavourite: fields[6] as bool,
+      creator: (fields[7] as List).cast<String>(),
+      category: (fields[8] as List).cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, News obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.articleId)
       ..writeByte(1)
@@ -84,7 +86,11 @@ class NewsAdapter extends TypeAdapter<News> {
       ..writeByte(5)
       ..write(obj.description)
       ..writeByte(6)
-      ..write(obj.isFavourite);
+      ..write(obj.isFavourite)
+      ..writeByte(7)
+      ..write(obj.creator)
+      ..writeByte(8)
+      ..write(obj.category);
   }
 
   @override
@@ -127,6 +133,14 @@ _$NewsImpl _$$NewsImplFromJson(Map<String, dynamic> json) => _$NewsImpl(
       pubDate: json['pubDate'] as String,
       description: json['description'] as String?,
       isFavourite: json['isFavourite'] as bool? ?? false,
+      creator: (json['creator'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
+      category: (json['category'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$NewsImplToJson(_$NewsImpl instance) =>
@@ -138,4 +152,6 @@ Map<String, dynamic> _$$NewsImplToJson(_$NewsImpl instance) =>
       'pubDate': instance.pubDate,
       'description': instance.description,
       'isFavourite': instance.isFavourite,
+      'creator': instance.creator,
+      'category': instance.category,
     };

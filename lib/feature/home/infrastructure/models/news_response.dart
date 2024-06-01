@@ -29,6 +29,8 @@ class News with _$News {
     @HiveField(4) required String pubDate,
     @HiveField(5) String? description,
     @HiveField(6) @Default(false) bool isFavourite,
+    @HiveField(7) @Default([]) List<String> creator,
+    @HiveField(8) @Default([]) List<String> category,
   }) = _News;
   factory News.fromJson(Map<String, dynamic> json) => _$NewsFromJson(json);
 }
