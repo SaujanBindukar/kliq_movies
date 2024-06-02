@@ -60,6 +60,7 @@ class AuthRepository implements IAuthRepository {
       if (response.user == null) {
         return Left(Failure.fromException(response));
       }
+      //add data into firevase
       await FirebaseFirestore.instance.collection('users').add(
         {
           'name': name,
@@ -67,7 +68,6 @@ class AuthRepository implements IAuthRepository {
           'userId': response.user!.uid,
         },
       );
-
       return Right(response.user!);
     } catch (e) {
       return Left(Failure.fromException(e));

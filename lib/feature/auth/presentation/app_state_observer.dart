@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/feature/auth/application/app_controller.dart';
-import 'package:kliq_movies/feature/dashboard/dashboard_screen.dart';
+import 'package:kliq_movies/feature/dashboard/presentation/dashboard_screen.dart';
 
 @RoutePage()
 class AppStateObserverScreen extends HookConsumerWidget {

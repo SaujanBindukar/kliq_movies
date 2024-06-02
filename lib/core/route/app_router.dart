@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:kliq_movies/feature/auth/presentation/app_state_observer.dart';
 import 'package:kliq_movies/feature/auth/presentation/login_screen.dart';
 import 'package:kliq_movies/feature/auth/presentation/register_screen.dart';
-import 'package:kliq_movies/feature/dashboard/dashboard_screen.dart';
+import 'package:kliq_movies/feature/dashboard/presentation/dashboard_screen.dart';
 import 'package:kliq_movies/feature/home/presentation/home_screen.dart';
 
 part 'app_router.gr.dart';

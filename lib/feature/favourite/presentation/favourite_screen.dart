@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/feature/favourite/application/favourite_controller.dart';
-import 'package:kliq_movies/feature/home/presentation/news_list_tile.dart';
 import 'package:kliq_movies/feature/home/presentation/widget/news_header.dart';
+import 'package:kliq_movies/feature/home/presentation/widget/news_list_tile.dart';
 
 class FavouriteScreen extends StatefulHookConsumerWidget {
   const FavouriteScreen({super.key});

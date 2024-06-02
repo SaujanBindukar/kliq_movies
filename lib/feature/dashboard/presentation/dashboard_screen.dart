@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/core/entities/base_state.dart';
 import 'package:kliq_movies/feature/auth/application/app_controller.dart';
-import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
-import 'package:kliq_movies/feature/dashboard/salomon_bottom_bart.dart';
+import 'package:kliq_movies/feature/dashboard/application/bottom_nav_provider.dart';
+import 'package:kliq_movies/feature/dashboard/presentation/widget/custom_bottom_navbar.dart';
 import 'package:kliq_movies/feature/favourite/presentation/favourite_screen.dart';
 import 'package:kliq_movies/feature/home/presentation/home_screen.dart';
 import 'package:kliq_movies/feature/profile/presentation/profile_screen.dart';
@@ -30,7 +30,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
     final currentUser = ref.watch(appControllerProvider).asData?.value;
     final colorTheme = Theme.of(context).colorScheme;
     return Scaffold(
-      bottomNavigationBar: SalomonBottomBar(
+      bottomNavigationBar: CustomBottomBar(
         backgroundColor: colorTheme.surface,
         margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
         currentIndex: index,
@@ -40,17 +40,17 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
         },
         selectedItemColor: colorTheme.primary,
         items: [
-          SalomonBottomBarItem(
+          CustomBottomBarItem(
             icon: const Icon(Icons.home),
             title: const Text('Home'),
           ),
-          SalomonBottomBarItem(
+          CustomBottomBarItem(
             icon: const Icon(Icons.favorite),
             title: const Text('Favourite'),
           ),
           //if the user is loggedin
           if (currentUser is BaseSuccess)
-            SalomonBottomBarItem(
+            CustomBottomBarItem(
               icon: const Icon(Icons.person),
               title: const Text('Profile'),
             ),

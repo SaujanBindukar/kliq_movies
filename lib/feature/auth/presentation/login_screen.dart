@@ -9,8 +9,8 @@ import 'package:kliq_movies/core/utils/validators.dart';
 import 'package:kliq_movies/core/widgets/custom_button.dart';
 import 'package:kliq_movies/core/widgets/custom_textfield.dart';
 import 'package:kliq_movies/feature/auth/application/auth_controller.dart';
-import 'package:kliq_movies/feature/auth/presentation/app_logo_widget.dart';
-import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
+import 'package:kliq_movies/feature/auth/presentation/widget/app_logo_widget.dart';
+import 'package:kliq_movies/feature/dashboard/application/bottom_nav_provider.dart';
 
 @RoutePage()
 class LoginScreen extends StatefulHookConsumerWidget {

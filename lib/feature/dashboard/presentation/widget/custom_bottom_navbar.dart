@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-class SalomonBottomBar extends StatelessWidget {
-  const SalomonBottomBar({
+class CustomBottomBar extends StatelessWidget {
+  const CustomBottomBar({
     super.key,
     required this.items,
     this.currentIndex = 0,
@@ -19,7 +19,7 @@ class SalomonBottomBar extends StatelessWidget {
     this.curve = Curves.easeOutQuint,
   });
 
-  final List<SalomonBottomBarItem> items;
+  final List<CustomBottomBarItem> items;
   final int currentIndex;
   final Function(int)? onTap;
   final Color? backgroundColor;
@@ -140,8 +140,8 @@ class SalomonBottomBar extends StatelessWidget {
   }
 }
 
-class SalomonBottomBarItem {
-  SalomonBottomBarItem({
+class CustomBottomBarItem {
+  CustomBottomBarItem({
     required this.icon,
     required this.title,
     this.selectedColor,

@@ -8,7 +8,7 @@ import 'package:kliq_movies/core/extensions/context_extension.dart';
 import 'package:kliq_movies/core/route/app_router.dart';
 import 'package:kliq_movies/core/theme/application/theme_provider.dart';
 import 'package:kliq_movies/core/widgets/custom_button.dart';
-import 'package:kliq_movies/feature/dashboard/bottom_nav_provider.dart';
+import 'package:kliq_movies/feature/dashboard/application/bottom_nav_provider.dart';
 import 'package:kliq_movies/feature/profile/application/profile_controller.dart';
 import 'package:kliq_movies/feature/profile/presentation/profile_laoding_widget.dart';
 

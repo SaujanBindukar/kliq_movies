@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:kliq_movies/feature/home/application/home_controller.dart';
 import 'package:kliq_movies/feature/home/application/news_filter_controller.dart';
-import 'package:kliq_movies/feature/home/presentation/news_list_tile.dart';
 import 'package:kliq_movies/feature/home/presentation/widget/news_category.dart';
 import 'package:kliq_movies/feature/home/presentation/widget/news_header.dart';
+import 'package:kliq_movies/feature/home/presentation/widget/news_list_tile.dart';
 import 'package:kliq_movies/feature/home/presentation/widget/news_loading_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
