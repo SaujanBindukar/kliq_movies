@@ -28,7 +28,6 @@ dependencies:
   #state management
   hooks_riverpod: ^2.5.1
   flutter_hooks: ^0.20.5
-  riverpod: ^2.5.1
 
 
   #functional programming
